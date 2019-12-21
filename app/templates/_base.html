@@ -1,0 +1,50 @@
+{% extends 'bootstrap/base.html' %}
+
+    {% block title %}
+        {{ supper }}
+        {% if title %}
+            {{ title }}
+        {% else %}
+            公司名称
+        {% endif %}
+    {% endblock %}
+
+    {% block head %}
+        {{ super() }}
+        <meta charset="UTF-8">
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    {% endblock %}
+
+    {% block navbar %}
+        <br/>
+{#        <h4>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;公司名称</h4>#}
+        <ul class="nav nav-tabs">
+            <li  class="disabled">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</li>
+            <li id="home" class="active"><a href="#">主页</a></li>
+            <li><a href="#">新闻中心</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    关于我们 <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">办公地址</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">联系方式</a></li>
+                </ul>
+            </li>
+        </ul>
+    {% endblock %}
+
+    {% block content %}
+        <div class="container">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-info" role="alert">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+            {% block app_content %}{% endblock %}
+        </div>
+    {% endblock %}

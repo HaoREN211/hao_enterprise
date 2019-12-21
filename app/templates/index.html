@@ -1,0 +1,68 @@
+{% extends "_base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+{% endblock %}
+
+{% block app_content %}
+    {{ supper }}
+    <br />
+    <div class="row">
+        <div class="col-sm-4">
+            <div id="myCarousel" class="carousel slide">
+                <!-- 轮播（Carousel）指标 -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0"
+                        class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+                <!-- 轮播（Carousel）项目 -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="https://dss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1220960363,2528578397&fm=26&gp=0.jpg" alt="First slide">
+                    </div>
+                    <div class="item">
+                        <img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=512683572,80152361&fm=26&gp=0.jpg" alt="Second slide">
+                    </div>
+                    <div class="item">
+                        <img src="https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1294403272,3279068192&fm=26&gp=0.jpg" alt="Third slide">
+                    </div>
+                </div>
+                <!-- 轮播（Carousel）导航 -->
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <h3>新闻中心</h3>
+        </div>
+    </div>
+{% endblock %}}
+
+{% block scripts %}
+    {{ super }}
+    <script type="text/javascript">
+        $(function(){
+            $('#myCarousel').on('slide.bs.carousel', function () {
+                console.log("您好");
+            });
+        });
+    </script>
+{% endblock %}
+
+{#{% block body_attribs %}#}
+{#    {{ supper }}#}
+{#    background-image="{{ url_for('static', filename='background.jpg') }}"#}
+{#    background="{{ url_for('static', filename='background.jpg') }}"#}
+{#    background-size="100%"#}
+{#{% endblock %}#}
+
