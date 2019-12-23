@@ -1,43 +1,40 @@
 {% extends 'bootstrap/base.html' %}
 
-    {% block title %}
-        {{ supper }}
-        {% if title %}
-            {{ title }}
-        {% else %}
-            公司名称
-        {% endif %}
-    {% endblock %}
-
     {% block head %}
-        {{ super() }}
+        <title>{{ title }}</title>
         <meta charset="UTF-8">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
     {% endblock %}
-
     {% block navbar %}
-        <br/>
-{#        <h4>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;公司名称</h4>#}
-        <ul class="nav nav-tabs">
-            <li  class="disabled">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</li>
-            <li id="home" class="active"><a href="#">主页</a></li>
-            <li><a href="#">新闻中心</a></li>
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    关于我们 <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">办公地址</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">联系方式</a></li>
+        <div style="margin-left: 7%; margin-top: 0.5%; ">
+            <div style="display: inline-block; margin-top: 0.5%; width: 5%"><img src="/favicon.ico" style="width: 50px;"></div>
+            <div style="display: inline-block; width: 35%">
+                <font size="4" style="font-weight: 900">{{ title }}</font>
+            </div>
+            <div style="display: inline-block; width: 50%; vertical-align: bottom;">
+                <ul class="nav nav-tabs">
+                    <li id="home" class="active"><a href="#">主页</a></li>
+                    <li><a href="#">新闻中心</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            关于我们 <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">办公地址</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">联系方式</a></li>
+                        </ul>
+                    </li>
                 </ul>
-            </li>
-        </ul>
+            </div>
+        </div>
     {% endblock %}
 
     {% block content %}
-        <div class="container">
+        {% block out_container %}{% endblock %}
+        <hr />
+        <div class="container" style="width: 100%">
             {% with messages = get_flashed_messages() %}
             {% if messages %}
                 {% for message in messages %}
@@ -47,4 +44,19 @@
             {% endwith %}
             {% block app_content %}{% endblock %}
         </div>
+
+        <div class="jumbotron" style="background-color: black">
+            <div style="text-align: center"><font color="#f0ffff" style="font-weight: 700">版权所有(C){{ title }}</font></div>
+            <br />
+            <div style="text-align: center">
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">
+                    <img src="http://download.sangfor.com.cn/Uploads/Editor/gongwang/gongwang.png" style="height: 20px">
+                </a>
+                    &nbsp;
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">
+                    <font color="#f0ffff" style="font-weight: 700">备案号：蜀ICP备19036031号-1</font>
+                </a>
+            </div>
+        </div>
     {% endblock %}
+

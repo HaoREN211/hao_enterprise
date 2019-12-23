@@ -6,3 +6,5 @@ Flask_Moment==0.9.0
 Flask_Babel==0.12.2
 Flask==1.1.1
 Flask_Bootstrap==3.3.7.1
+python-dotenv==0.10.3
+pymysql==0.9.3
