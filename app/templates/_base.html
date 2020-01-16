@@ -5,30 +5,48 @@
         <meta charset="UTF-8">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     {% endblock %}
+
+    {% block scripts %}
+        {{ super() }}
+        <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% endblock %}
+
     {% block navbar %}
-        <div style="margin-left: 7%; margin-top: 0.5%; ">
-            <div style="display: inline-block; margin-top: 0.5%; width: 5%"><img src="/favicon.ico" style="width: 50px;"></div>
-            <div style="display: inline-block; width: 35%">
-                <font size="4" style="font-weight: 900">{{ title }}</font>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <div class="navbar-brand" href="#">
+                    <div style="vertical-align: bottom">
+                        <img src="{{ url_for("static", filename="logo.JPG") }}" style="width: 50px;">
+                        <span style="font-weight: bold; font-size: large; color: #000000">&nbsp;&nbsp;{{ title }}</span>
+                    </div>
+                </div>
             </div>
-            <div style="display: inline-block; width: 50%; vertical-align: bottom;">
-                <ul class="nav nav-tabs">
-                    <li id="home" class="active"><a href="#">主页</a></li>
-                    <li><a href="#">新闻中心</a></li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            关于我们 <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">办公地址</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">联系方式</a></li>
-                        </ul>
-                    </li>
-                </ul>
+            <div style="position: absolute; bottom: 0; right: 5%">
+                    <ul class="nav nav-pills">
+                        <li class="active"><a href="#">主页</a></li>
+                        <li><a href="#">新闻中心</a></li>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">办公地址</a></li>
+                        <li><a href="#">联系方式</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                下拉菜单 <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">下拉菜单</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">EJB</a></li>
+                                <li><a href="#">分离的链接</a></li>
+                            </ul>
+                        </li>
+                    </ul>
             </div>
         </div>
+    </nav>
     {% endblock %}
 
     {% block content %}

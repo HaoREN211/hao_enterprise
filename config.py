@@ -30,4 +30,4 @@ class Config(object):
 
     BOOTSTRAP_SERVE_LOCAL = True
 
-    ENTERPRISE_NAME = "四川欣盛宏源安全技术服务有限公司"
+    ENTERPRISE_NAME = "四川欣盛宏源安全技术服务责任有限公司"
