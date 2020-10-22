@@ -1,0 +1,45 @@
+{% extends "data/_data_base.html" %}
+
+{% block head %}
+    {{ super() }}
+    <title>修改公司简介</title>
+{% endblock %}
+
+{% block data_content %}
+<div class="row" style="background-color: white">
+    <div class="container">
+        <h1>修改公司简介</h1>
+        <hr />
+        <form method="post" role="form">
+            {{ form.csrf_token() }}
+            {{ form.name }}
+            <br />
+            {{ form.description_submit }}
+            <input type="button" class="btn btn-xs btn-danger" value="取消"
+                    data-toggle="modal" data-target="#myModalCancel">
+        </form>
+        <br />
+        <br />
+    </div>
+
+    <div class="modal fade" id="myModalCancel" tabindex="-1" role="dialog" aria-labelledby="myModalCvMainAttributeLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                    </button>
+                    <h4 class="modal-title" id="myModalCvMainAttributeLabel">
+                        您确认要放弃修改吗？
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+                    <input type="button" class="btn btn-xs btn-danger" value="放弃修改"
+                        onclick=window.location.href="{{ url_for("data.index") }}">
+                    <input type="button" class="btn btn-xs btn-success" value="继续修改" data-dismiss="modal">
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div>
+{% endblock %}

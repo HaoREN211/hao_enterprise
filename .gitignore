@@ -2,3 +2,4 @@
 config_db.py
 *.pyc
 *.log
+migrations/*

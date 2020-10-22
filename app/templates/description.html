@@ -1,0 +1,18 @@
+{% extends "_base.html" %}
+
+{% block app_content %}
+
+
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a style="cursor: pointer" onclick=window.location.href="{{ url_for("main.index") }}">主页</a></li>
+            <li class="active">公司简介</li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="breadcrumb" style="background-color: white">
+            {{ form.name.data }}
+        </div>
+    </div>
+{% endblock %}

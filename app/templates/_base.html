@@ -1,17 +1,33 @@
 {% extends 'bootstrap/base.html' %}
 
     {% block head %}
-        <title>{{ title }}</title>
+        <title>
+        {% if title %}
+            {{ title }}
+        {% else %}
+            四川欣盛宏源安全技术服务责任有限公司
+        {% endif %}
+        </title>
         <meta charset="UTF-8">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
-        <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ url_for("static", filename="css/bootstrap.min.css") }}">
+        <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/hao.min.js') }}"></script>
     {% endblock %}
 
     {% block scripts %}
         {{ super() }}
-        <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-        <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="{{ url_for("static", filename="js/jquery.min.js") }}"></script>
+        <script src="{{ url_for("static", filename="js/bootstrap.min.js") }}"></script>
+        <script src="{{ url_for('static', filename='js/hao.min.js') }}"></script>
+
+        <script type="application/javascript">
+            function mouse_over_click(id) {
+                document.getElementById(id).click();
+            }
+        </script>
     {% endblock %}
 
     {% block navbar %}
@@ -25,34 +41,44 @@
                     </div>
                 </div>
             </div>
-            <div style="position: absolute; bottom: 0; right: 5%">
-                    <ul class="nav nav-pills">
-                        <li class="active"><a href="#">主页</a></li>
-                        <li><a href="#">新闻中心</a></li>
-                        <li><a href="#">关于我们</a></li>
-                        <li><a href="#">办公地址</a></li>
-                        <li><a href="#">联系方式</a></li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                下拉菜单 <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">下拉菜单</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">EJB</a></li>
-                                <li><a href="#">分离的链接</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-            </div>
+            <form class="navbar-form navbar-right" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="搜索内容...">
+                </div>
+                <button type="submit" class="btn btn-danger">搜索</button>
+            </form>
         </div>
     </nav>
     {% endblock %}
 
     {% block content %}
+        <div class="container">
+            <ul class="nav nav-pills">
+                <li {% if main_page=="home" %}class="active"{% endif %}>
+                    <a onclick=window.location.href="{{ url_for("main.index") }}" style="cursor: pointer">主页</a></li>
+                <li {% if main_page=="description" %}class="active"{% endif %}>
+                    <a onclick=window.location.href="{{ url_for("main.description") }}" style="cursor: pointer;">公司简介</a></li>
+                <li><a href="#">新闻中心</a></li>
+                <li><a href="#">办公地址</a></li>
+                <li><a href="#">联系方式</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" id="main_selects" href="#"
+                       onmouseover=mouse_over_click("main_selects")>
+                        下拉菜单 <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">下拉菜单</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">EJB</a></li>
+                        <li><a href="#">分离的链接</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div style="background-image: url('/static/images/description.jpg'); background-size: cover;
+    height: 200px; width: 100%"></div>
         {% block out_container %}{% endblock %}
-        <hr />
-        <div class="container" style="width: 100%">
+        <div class="container" style="width: 100%; background-color: #c3c3c3" >
             {% with messages = get_flashed_messages() %}
             {% if messages %}
                 {% for message in messages %}
@@ -60,6 +86,7 @@
                 {% endfor %}
             {% endif %}
             {% endwith %}
+            <br />
             {% block app_content %}{% endblock %}
         </div>
 

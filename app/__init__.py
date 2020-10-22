@@ -18,11 +18,11 @@ import os
 
 db = SQLAlchemy()
 migrate = Migrate()
-# login = LoginManager()
+login = LoginManager()
 
 # 要求用户登录
-# login.login_view = 'auth.login'
-# login.login_message = '请先进行登录.'
+login.login_view = 'auth.login'
+login.login_message = '请先进行登录.'
 bootstrap = Bootstrap()
 moment = Moment()
 babel = Babel()
@@ -34,7 +34,7 @@ def create_app(config_class=Config):
 
     db.init_app(app)
     migrate.init_app(app, db)
-    # login.init_app(app)
+    login.init_app(app)
     bootstrap.init_app(app)
     app.config.setdefault('BOOTSTRAP_SERVE_LOCAL', True)
     moment.init_app(app)
@@ -42,6 +42,12 @@ def create_app(config_class=Config):
 
     from app.main import bp as main_bp
     app.register_blueprint(main_bp)
+
+    from app.auth import bp as auth_bp
+    app.register_blueprint(auth_bp, url_prefix='/auth')
+
+    from app.data import bp as data_bp
+    app.register_blueprint(data_bp, url_prefix='/data')
 
     if not app.debug:
         if not os.path.exists('logs'):

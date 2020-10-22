@@ -1,18 +1,5 @@
 {% extends "_base.html" %}
 
-{#{% block body_attribs %}#}
-{#    {{ super() }}#}
-{#    onload="index_init_carousel_slide();"#}
-{#{% endblock %}#}
-
-{% block head %}
-    {{ super() }}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/hao.min.js') }}"></script>
-{% endblock %}
-
 {% block out_container %}
         <div id="myCarousel" class="carousel slide" style="margin: 0 0 0 0">
             <!-- 轮播（Carousel）指标 -->
